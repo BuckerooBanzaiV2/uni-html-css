@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Admin</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Blog Admin Seite</h1>
+        <nav>
+            <ul>
+                <li><a href="public.html">Zur öffentlichen Seite</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="manage-posts">
+            <h2>Beiträge verwalten</h2>
+            <form id="post-form">
+                <label for="post-action">Aktion:</label>
+                <select id="post-action" name="post-action" required>
+                    <option value="new">Neuen Beitrag hinzufügen</option>
+                    <option value="edit">Bestehenden Beitrag bearbeiten</option>
+                    <option value="delete">Beitrag löschen</option>
+                </select>
+                <label for="post-select">Beitrag auswählen:</label>
+                <select id="post-select" name="post-select">
+                    <!-- Optionen werden dynamisch geladen -->
+                </select>
+                
+                <label for="title">Titel:</label>
+                <input type="text" id="title" name="title">
+                <label for="content">Inhalt:</label>
+                <textarea id="content" name="content" rows="4"></textarea>
+                <button type="submit">Veröffentlichen</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Mein Blog. Alle Rechte vorbehalten.</p>
+    </footer>
+
+    <script src="javascript/admin.js"></script>
+</body>
+</html>

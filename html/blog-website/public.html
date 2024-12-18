@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mein Blog</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Willkommen zu meinem Blog!</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Über mich</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+                <li><a href="admin.html">Admin</a></li>
+                <li><a href="aufgaben/aufgabenNavigator.html">Aufgaben</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <h2>Neueste Beiträge</h2>
+            <div id="blog-posts"></div>
+        </section>
+
+        <section id="about">
+            <h2>Über mich</h2>
+            <p>Hier kannst du eine kurze Beschreibung über dich selbst einfügen.</p>
+        </section>
+
+        <section id="contact">
+            <h2>Kontakt</h2>
+            <form action="mailto:deinemail@example.com" method="post" enctype="text/plain">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">E-Mail:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Nachricht:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                <button type="submit">Senden</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Mein Blog. Alle Rechte vorbehalten.</p>
+    </footer>
+
+    <script src="javascript/public.js"></script>
+</body>
+</html>
