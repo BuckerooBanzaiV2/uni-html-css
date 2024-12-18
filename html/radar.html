@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radar Dish Animation</title>
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        canvas {
+            border: 1px solid #0F0;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="radar" width="600" height="600"></canvas>
+    <script>
+        const canvas = document.getElementById('radar');
+        const ctx = canvas.getContext('2d');
+        const centerX = canvas.width / 2;
+        const centerY = canvas.height / 2;
+        const radius = 250;
+        let angle = 0;
+
+        let redBlip = null;
+        const redBlipPath = [];
+        let redBlipTimer = 0;
+
+        function generateRedBlipPath() {
+            const path = [];
+            let x = Math.random() * canvas.width;
+            let y = Math.random() * canvas.height;
+            const stepSize = 2;
+            const direction = Math.random() * 2 * Math.PI;
+
+            for (let i = 0; i < 100; i++) { // Adjust number of steps as needed
+                x += stepSize * Math.cos(direction);
+                y += stepSize * Math.sin(direction);
+
+                if (Math.sqrt((x - centerX) ** 2 + (y - centerY) ** 2) < radius) {
+                    path.push({ x, y });
+                } else {
+                    x -= stepSize * Math.cos(direction);
+                    y -= stepSize * Math.sin(direction);
+                }
+            }
+            return path;
+        }
+
+        function drawRadar() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw radar circle
+            ctx.strokeStyle = '#0F0';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+            ctx.stroke();
+
+            // Draw radar lines
+            for (let i = 0; i < 4; i++) {
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo(centerX + radius * Math.cos(i * Math.PI / 2), centerY + radius * Math.sin(i * Math.PI / 2));
+                ctx.stroke();
+            }
+
+            // Draw radar sweep
+            ctx.beginPath();
+            ctx.moveTo(centerX, centerY);
+            ctx.arc(centerX, centerY, radius, angle, angle + 0.1);
+            ctx.fillStyle = 'rgba(0, 255, 0, 0.2)';
+            ctx.fill();
+
+            // Draw random blips
+            for (let i = 0; i < 10; i++) {
+                const blipAngle = Math.random() * 2 * Math.PI;
+                const blipRadius = Math.random() * radius;
+                const blipX = centerX + blipRadius * Math.cos(blipAngle);
+                const blipY = centerY + blipRadius * Math.sin(blipAngle);
+
+                ctx.beginPath();
+                ctx.arc(blipX, blipY, 1, 0, 2 * Math.PI);
+                ctx.fillStyle = '#0F0';
+                ctx.fill();
+            }
+
+            // Red blip logic
+            if (redBlipPath.length > 0) {
+                redBlip = redBlipPath.shift();
+                ctx.beginPath();
+                ctx.arc(redBlip.x, redBlip.y, 5, 0, 2 * Math.PI);
+                ctx.fillStyle = '#F00';
+                ctx.fill();
+            }
+
+            angle += 0.02;
+            requestAnimationFrame(drawRadar);
+        }
+
+        function spawnRedBlip() {
+            if (redBlipPath.length === 0 && Math.random() < 0.50) { // Adjust probability as needed
+                redBlipPath.push(...generateRedBlipPath());
+            }
+            setTimeout(spawnRedBlip, 1000);
+        }
+
+        drawRadar();
+        spawnRedBlip();
+    </script>
+</body>
+</html>

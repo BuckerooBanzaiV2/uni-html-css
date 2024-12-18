@@ -1,0 +1,28 @@
+
+p {
+    color: blue; 
+}
+
+
+a:hover {
+    color: blue
+}
+
+
+p::before {
+
+
+
+    content: "hinweis";
+    
+    color: blueviolet;
+}
+
+.link {
+    color: red; 
+}
+
+#ueberschrift {
+    color: green; 
+    background-color: orange; 
+}
