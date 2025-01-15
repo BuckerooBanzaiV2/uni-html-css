@@ -1,28 +1,19 @@
-const person1 = {
-    name: "d",
-    alter: "1",
-    beruf: "ddd"
-}
+
+const person1 = { name: 'Alice', age: 30, job: 'Engineer' };
+const person2 = { name: 'Bob', age: 24, job: 'Designer' };
+const person3 = { name: 'Carol', age: 28, job: 'Teacher' };
 
 
-const person2 = {
-    name: "d",
-    alter: "2",
-    beruf: "ddd"
-}
+const people = [person1, person2, person3];
+console.log('People', people);
 
 
-const person3 = {
-    name: "d",
-    alter: "3",
-    beruf: "ddd"
-}
+const jobs = people.map(person => person.job);
+console.log('Berufe:', jobs);
 
 
-let PersonArray = [person1, person2, person3]
+const newPerson = { name: 'Dave', age: 35, job: 'Chef' };
+const updatedPeople = [...people, newPerson];
 
 
-const berufeListe = PersonArray.map(person => person.beruf);
-
-
-console.log(`die liste ist: ${berufeListe}`)
+console.log('Aktualisiertes Array:', updatedPeople);

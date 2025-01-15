@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript-Modulo</title>
+</head>
+<body>
+    <h1>Überprüfung, ob eine Zahl gerade oder ungerade ist</h1>
+    <button onclick="checkNumber()">Zahl prüfen</button>
+    <p id="result"></p>
+
+    <script>
+        function checkNumber() {
+            var number = Number(prompt("Wähle eine Zahl"));
+
+            if (number % 2 == 0) {
+                document.getElementById("result").innerText = "Die Zahl ist gerade.";
+            } else {
+                document.getElementById("result").innerText = "Die Zahl ist ungerade.";
+            }
+        }
+    </script>
+</body>
+</html>
