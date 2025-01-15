@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filmdaten abrufen</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        td {
+            white-space: normal;
+        }
+        .error {
+            color: red;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Film-Suche</h1>
+    <input type="text" id="movieTitle" placeholder="Filmtitel eingeben">
+    <button onclick="fetchMovie()">Suchen</button>
+    <div id="loadingBar">Lade...</div>
+    <div id="errorMessage" class="error" style="display: none;"></div>
+    <table id="resultTable" style="display: none;">
+        <thead>
+            <tr>
+                <th>Titel</th>
+                <th>Erscheinungsjahr</th>
+                <th>Genre</th>
+                <th>Handlung</th>
+            </tr>
+        </thead>
+        <tbody id="resultBody">
+        </tbody>
+    </table>
+
+    <script src="app.js"></script>
+</body>
+</html>
