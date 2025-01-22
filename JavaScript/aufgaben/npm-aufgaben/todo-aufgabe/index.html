@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TODO App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    input, button {
+      padding: 10px;
+      margin-right: 10px;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      padding: 8px;
+      background-color: #f0f0f0;
+      margin: 5px 0;
+      border-radius: 4px;
+    }
+    li.completed {
+      text-decoration: line-through;
+      color: grey;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>TODO App</h1>
+
+  <input type="text" id="todoInput" placeholder="Geben Sie Ihr To-Do ein...">
+  <button id="addButton">Hinzufügen</button>
+
+  <ul id="todoList"></ul>
+
+  <script src="app.js"></script>
+</body>
+</html>

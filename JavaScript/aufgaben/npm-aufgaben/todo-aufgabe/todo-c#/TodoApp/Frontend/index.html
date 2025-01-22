@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #todo-list {
+            margin-top: 20px;
+            list-style-type: none;
+            padding: 0;
+        }
+        #todo-list li {
+            background: #f4f4f4;
+            margin: 5px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Todo App</h1>
+    <div>
+        <input type="text" id="todo-input" placeholder="Neue Aufgabe hinzufÃ¼gen" />
+        <button id="add-todo">HinzufÃ¼gen</button>
+    </div>
+    <ul id="todo-list"></ul>
+
+    <script>
+        const todoInput = document.getElementById('todo-input');
+        const addTodoButton = document.getElementById('add-todo');
+        const todoList = document.getElementById('todo-list');
+
+        // Lade Todos aus Local Storage
+        function loadTodos() {
+            const todos = JSON.parse(localStorage.getItem('todos')) || [];
+            todoList.innerHTML = ''; // Liste leeren
+            todos.forEach(todo => {
+                const li = document.createElement('li');
+                li.textContent = todo.task;
+                todoList.appendChild(li);
+            });
+        }
+
+        // Neues Todo hinzufÃ¼gen
+        addTodoButton.addEventListener('click', () => {
+            const newTodo = todoInput.value.trim();
+            if (newTodo) {
+                const todos = JSON.parse(localStorage.getItem('todos')) || [];
+                todos.push({ task: newTodo });
+                localStorage.setItem('todos', JSON.stringify(todos));
+                todoInput.value = ''; // Eingabe leeren
+                loadTodos(); // Liste neu laden
+            } else {
+                alert('Bitte geben Sie eine Aufgabe ein.');
+            }
+        });
+
+        // Initial Todos laden
+        loadTodos();
+    </script>
+</body>
+</html>
